@@ -1,11 +1,18 @@
 # Calculadora
 
-  O código para a execução do relógio consiste de dois arquivos, o primeiro(relógio_digital.vhd) executa a operação do relógio em si com a variação de cada digito, mas sempre trabalhando com inteiros. O segundo arquivo (relógio_digital_dec.vhd) é responsável por fazer a conversão do inteiro para um vetor com as posições corretas do display 7 segmentos. O primeiro arquivo começa chamando as bibliotecas e a função que se encontra no outro arquivo( work.bcd_decoder.all), em seguida passamos a entidade relógio_digital o primeiro passo é declarar o GENERIC nomeado SEG um inteiro de valor 4999999999, o qual sera usado no contador para identificar a passagem de 1 segundo, o próximo passo é definir as portas os displays são nomeados “HEX0” sendo o digito final sua posição. São declarados como saídas std_logic_vector de 6 a 0, o clock de 50 MHz também é definido como CLOCK_50 e entrada std_logic. Na arquitetura declaramos os sinais: 
+Iniciando a descrição pelo código da conversão temos um package nomeado bcd_decoder, o qual é uma função com entrada A(inteiro) e saída STD_LOGIC_VECTOR. Seu funcionamento baseia-se em um case que analisa o valor de A e retorna o valor correto para acionar o display 7 segmentos. Os valores de variam de -7 a 49 visto que a calculadora só ira operar nesse intervalo. O vetor saída nem na posição 20 a 14 o sinal do número, na 13 a 7 o digito das dezenas e na posição de 6 a 0 as unidades. Caso seja pedido um numero fora do intervalo retornara traços. Passando ao código de cálculos temos a chamada das bibliotecas e do decodificador, na entidade as portas utilizadas são: 
+* SW( entrada UNSIGNED(sem sinal) de 9 a 0) 
+* KEY(entrada std_logic_vector de 3 a 0 
+* HEX0(saídas std_logic_vector de 6 a 0 para cada display) 
 
-* Counter (Inteiro de 0 a SEG) 
-* M0(Inteiro de 0 a 9) 
-* M1(Inteiro de 0 a 5) 
-* S0 (Inteiro de 0 a 9) 
-* S1(Inteiro de 0 a 5)
+Iniciando a arquitetura temos a definição de alguns sinais que serão utilizados para armazenar temporariamente os valores obtidos nas operações a serem realizadas: 
+* Soma( Inteiro de -7 a 49) 
+* S(Inteiro de -7 a 49) 
+* As e bs(inteiro de 0 a 7) 
+* Res, diga e digb( std_logic_vector de 20 a 0) 
+* Sel(std_logic_vector 1 a 0) 
+* Sinal(std_logic_vector 1 a 0) 
+* R(Inteiro) 
+* Rest(std_logic_vector 20 a 0) 
 
-  Então definimos que os valores dos displays são obtidos usando a função criada para a conversão de inteiro para o vetor, assim chamamos a função para cada display com seu respectivo digito a ser exibido. Um process sensível ao clock é iniciado. Um condicional identifica a borda de subida do clock, um novo condicional identifica se counter é diferente de SEG, se for então incrementa 1 a counter, senão zera counter e incrementa um a S0, um novo condicional identifica se S0=9 se for então zera S0 e incrementa 1 a S1, um condicional identifica se S1=5, positivo zera S1 e incrementa M0, outro condicional identifica M0=9, correspondendo zera M0 e incrementa M1, um ultimo condicional identifica M1=5 e reinicia todos os dígitos. O segundo código contém um package nomeado bcd_decoder, o qual é uma função com entrada A(inteiro) e saída STD_LOGIC_VECTOR. Seu funcionamento baseia-se em um case que analisa o valor de A e retorna o valor correto para acionar o display 7 segmentos
+Definimos Sel como a conversão de SW( 5 a 4 ) para um std_logic_vector. Iniciamos um process(op) sensível em Sel,SW,as,bs,soma,S,R. “as” é SW(9 a 7) convertido para inteiro, “bs” é SW(2 a 0) convertido para inteiro. Um condicional verifica Sel=00, então soma = as + bs e S=soma. Senão e Sel=01 entao soma=as-bs e S=soma. Senão e Sel=10 então soma = as*bs e S=soma. Senão e Sel=11, e novo condicional com bs diferente de 0 soma= as/bs S=soma e R= as rem bs, Encerra-se o process(op) Um process(sig) sensível em Sel e SW com um condicional Sel=00 mostra”+” no display 2. Senão e Sel=01 mostra “-“. Senão e Sel=10 mostra ”X”. Senão e Sel=11 mostra”/”. O process(sig) acaba Abre-se o process(disp) sensível em KEY(3),Sel,res,rest,S,R,as,bs,diga,sinal,digb. Um condicional identifica se o botão 3 foi pressionado(vai para LOW), um condicional identifica Sel =11 e outro bs /= 0 entao res é S convertido pelo decoder e rest é R convertido pelo decoder. Disp 0 é os dígitos de 6 a 0 de rest. Disp 2 é “r”. Disp 3 é os dígitos de 6 a 0 de res e Disp 3 é “q”. Senão(bs=0). Disp 3 é “E”, Disp 2 é “r”, Disp1 é “r” e Disp0 é “o”. Senão (Sel /= 11) res é S convertido pelo decoder. Disp 0 é os dígitos de 6 a 0 de res, Disp 1 é os dígitos 13 a 7 de res, Disp 2 é os dígitos 20 a 14 de res e Disp 3 é “A”. Senão(Key(3) liberada) diga é as convertido por decoder digb é bs convertido por decoder. Disp 3 é “C”, Disp 2 é os dígitos 6-0 de diga, Disp 1 os dígitos 6-0 de sinal e Disp0 os dígitos 6-0 de digb
