@@ -1,0 +1,92 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_arith.all;
+use IEEE.std_logic_unsigned.all;
+use work.bcd_decoder.all;
+ 
+entity calculadora is 
+	port(
+		SW: in unsigned( 9 downto 0 );
+		KEY: in std_logic_vector (3 DOWNTO 0);
+		HEX0  :OUT STD_LOGIC_VECTOR (6 downto 0);
+		HEX1  :OUT STD_LOGIC_VECTOR (6 downto 0);
+		HEX2  :OUT STD_LOGIC_VECTOR (6 downto 0);
+		HEX3  :OUT STD_LOGIC_VECTOR (6 downto 0)
+
+	);
+end calculadora;
+ 
+architecture operacoes of calculadora is
+		signal soma: integer range -7 to 49;
+		signal S: integer range -7 to 49;
+		signal as,bs: integer range 0 to 7;
+		signal res,diga,digb: std_LOGIC_VECTOR(20 downto 0);
+		signal Sel: std_logic_vector(1 DOWNTO 0);
+		signal sinal: std_logic_vector(6 DOWNTO 0);
+		signal R : integer;
+		signal rest : std_LOGIC_VECTOR(20 downto 0);
+	begin
+		Sel<= conv_std_logic_vector(SW(5 DOWNTO 4), 2);
+		
+	op: process(Sel)
+		Begin
+			as <= conv_integer(SW(9 DOWNTO 7));
+			bs <= conv_integer(SW(2 DOWNTO 0));
+			if Sel="00" THEN
+				 soma<= (as) + (bs);
+				 S<= soma;
+			elsif Sel="01" THEN
+				 soma<= (as) - (bs);
+				 S<= soma;
+			elsif Sel="10" THEN
+				 soma<= (as) * (bs);
+				 S<= soma;	
+			elsif Sel="11" THEN
+				 soma<= (as) / (bs);
+				 S<= soma;
+				 R<= as rem bs;
+			end if;
+	end process;
+	
+	sig: process(Sel,SW)
+		Begin
+			if Sel="00" THEN
+				 sinal <= "0011010";
+			elsif Sel="01" THEN
+				 sinal <= "1000000";
+			elsif Sel="10" THEN
+				 sinal <= "0001001";
+			elsif Sel="11" THEN
+				 sinal <= "0101101";
+			end if;
+	end process;
+	
+	disp: process(KEY(3))
+		Begin
+			if KEY(3)='0' THEN
+				if Sel="11" Then
+					res <= int2seg(S);
+					rest <= int2seg(R);
+					HEX0 <= rest(6 DOWNTO 0);
+					HEX1 <= "0101111";
+					HEX2 <= res(6 DOWNTO 0);
+					HEX3 <= "0011000";
+				else
+					res <= int2seg(S);
+					HEX0 <= res(6 DOWNTO 0);
+					HEX1 <= res(13 DOWNTO 7);
+					HEX2 <= res(20 DOWNTO 14);
+					HEX3 <= "0001000";
+				end if;
+					
+			else
+				diga <= int2seg(as);
+				digb <= int2seg(bs);
+				HEX3 <= "1000110";
+				HEX2 <= diga(6 DOWNTO 0);
+				HEX1 <= sinal(6 DOWNTO 0);
+				HEX0 <= digb(6 DOWNTO 0);
+			end if;
+	end process;
+end operacoes;
+ 

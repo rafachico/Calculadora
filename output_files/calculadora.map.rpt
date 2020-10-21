@@ -1,0 +1,676 @@
+Analysis & Synthesis report for calculadora
+Wed Oct 02 15:07:53 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 12. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 14. lpm_mult Parameter Settings by Entity Instance
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Oct 02 15:07:53 2019           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; calculadora                                     ;
+; Top-level Entity Name              ; calculadora                                     ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 228                                             ;
+;     Total combinational functions  ; 228                                             ;
+;     Dedicated logic registers      ; 0                                               ;
+; Total registers                    ; 0                                               ;
+; Total pins                         ; 42                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C20AF484A7      ;                    ;
+; Top-level entity name                                                      ; calculadora        ; calculadora        ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                         ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
+; calculadora.vhd                  ; yes             ; User VHDL File               ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/calculadora.vhd            ;         ;
+; bcd_decoder.vhd                  ; yes             ; User VHDL File               ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/bcd_decoder.vhd            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                     ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/abs_divider.inc                                                                    ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                                ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                                                     ;         ;
+; db/lpm_divide_u4m.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/lpm_divide_u4m.tdf      ;         ;
+; db/sign_div_unsign_5kh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/sign_div_unsign_5kh.tdf ;         ;
+; db/alt_u_div_cve.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/alt_u_div_cve.tdf       ;         ;
+; db/add_sub_lkc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/add_sub_lkc.tdf         ;         ;
+; db/add_sub_mkc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/add_sub_mkc.tdf         ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mult.tdf                                                                       ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                    ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/multcore.inc                                                                       ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/bypassff.inc                                                                       ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.inc                                                                       ;         ;
+; multcore.tdf                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/multcore.tdf                                                                       ;         ;
+; csa_add.inc                      ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/csa_add.inc                                                                        ;         ;
+; mpar_add.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/mpar_add.inc                                                                       ;         ;
+; muleabz.inc                      ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/muleabz.inc                                                                        ;         ;
+; mul_lfrg.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/mul_lfrg.inc                                                                       ;         ;
+; mul_boothc.inc                   ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/mul_boothc.inc                                                                     ;         ;
+; alt_ded_mult.inc                 ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/alt_ded_mult.inc                                                                   ;         ;
+; alt_ded_mult_y.inc               ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/alt_ded_mult_y.inc                                                                 ;         ;
+; dffpipe.inc                      ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/dffpipe.inc                                                                        ;         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/mpar_add.tdf                                                                       ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.tdf                                                                    ;         ;
+; addcore.inc                      ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/addcore.inc                                                                        ;         ;
+; look_add.inc                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/look_add.inc                                                                       ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc                                                            ;         ;
+; db/add_sub_07h.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/add_sub_07h.tdf         ;         ;
+; db/add_sub_17h.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/add_sub_17h.tdf         ;         ;
+; altshift.tdf                     ; yes             ; Megafunction                 ; d:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.tdf                                                                       ;         ;
+; db/lpm_divide_rcm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/Users/geral/Documents/UNICAMP/Matérias/2019-2S/EB411 - Circuitos Digitais II/Mini_Projetos/calculadora/db/lpm_divide_rcm.tdf      ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 228    ;
+;                                             ;        ;
+; Total combinational functions               ; 228    ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 95     ;
+;     -- 3 input functions                    ; 113    ;
+;     -- <=2 input functions                  ; 20     ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 210    ;
+;     -- arithmetic mode                      ; 18     ;
+;                                             ;        ;
+; Total registers                             ; 0      ;
+;     -- Dedicated logic registers            ; 0      ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 42     ;
+; Embedded Multiplier 9-bit elements          ; 0      ;
+; Maximum fan-out node                        ; KEY[3] ;
+; Maximum fan-out                             ; 40     ;
+; Total fan-out                               ; 773    ;
+; Average fan-out                             ; 2.86   ;
++---------------------------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                             ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                 ; Library Name ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |calculadora                                   ; 228 (194)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 42   ; 0            ; |calculadora                                                                                                                        ; work         ;
+;    |lpm_divide:Div0|                           ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Div0                                                                                                        ; work         ;
+;       |lpm_divide_rcm:auto_generated|          ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Div0|lpm_divide_rcm:auto_generated                                                                          ; work         ;
+;          |sign_div_unsign_5kh:divider|         ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Div0|lpm_divide_rcm:auto_generated|sign_div_unsign_5kh:divider                                              ; work         ;
+;             |alt_u_div_cve:divider|            ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Div0|lpm_divide_rcm:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_cve:divider                        ; work         ;
+;    |lpm_divide:Mod0|                           ; 13 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Mod0                                                                                                        ; work         ;
+;       |lpm_divide_u4m:auto_generated|          ; 13 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Mod0|lpm_divide_u4m:auto_generated                                                                          ; work         ;
+;          |sign_div_unsign_5kh:divider|         ; 13 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_5kh:divider                                              ; work         ;
+;             |alt_u_div_cve:divider|            ; 13 (13)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_divide:Mod0|lpm_divide_u4m:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_cve:divider                        ; work         ;
+;    |lpm_mult:Mult0|                            ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0                                                                                                         ; work         ;
+;       |multcore:mult_core|                     ; 17 (9)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core                                                                                      ; work         ;
+;          |mpar_add:padder|                     ; 8 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                      ; work         ;
+;             |lpm_add_sub:adder[0]|             ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ; work         ;
+;                |add_sub_07h:auto_generated|    ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_07h:auto_generated                      ; work         ;
+;             |mpar_add:sub_par_add|             ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ; work         ;
+;                   |add_sub_17h:auto_generated| ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculadora|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_17h:auto_generated ; work         ;
++------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; digb[0]                                             ; KEY[3]              ; yes                    ;
+; res[0]                                              ; res[20]             ; yes                    ;
+; rest[0]                                             ; rest[6]             ; yes                    ;
+; digb[1]                                             ; KEY[3]              ; yes                    ;
+; res[1]                                              ; res[20]             ; yes                    ;
+; rest[1]                                             ; rest[6]             ; yes                    ;
+; digb[2]                                             ; KEY[3]              ; yes                    ;
+; res[2]                                              ; res[20]             ; yes                    ;
+; rest[2]                                             ; rest[6]             ; yes                    ;
+; digb[3]                                             ; KEY[3]              ; yes                    ;
+; res[3]                                              ; res[20]             ; yes                    ;
+; rest[3]                                             ; rest[6]             ; yes                    ;
+; digb[4]                                             ; KEY[3]              ; yes                    ;
+; res[4]                                              ; res[20]             ; yes                    ;
+; rest[4]                                             ; rest[6]             ; yes                    ;
+; digb[5]                                             ; KEY[3]              ; yes                    ;
+; res[5]                                              ; res[20]             ; yes                    ;
+; rest[5]                                             ; rest[6]             ; yes                    ;
+; digb[6]                                             ; KEY[3]              ; yes                    ;
+; res[6]                                              ; res[20]             ; yes                    ;
+; rest[6]                                             ; rest[6]             ; yes                    ;
+; res[7]                                              ; res[20]             ; yes                    ;
+; res[8]                                              ; res[20]             ; yes                    ;
+; res[9]                                              ; res[20]             ; yes                    ;
+; res[10]                                             ; res[20]             ; yes                    ;
+; res[11]                                             ; res[20]             ; yes                    ;
+; res[12]                                             ; res[20]             ; yes                    ;
+; res[13]                                             ; res[20]             ; yes                    ;
+; diga[0]                                             ; KEY[3]              ; yes                    ;
+; diga[1]                                             ; KEY[3]              ; yes                    ;
+; diga[2]                                             ; KEY[3]              ; yes                    ;
+; diga[3]                                             ; KEY[3]              ; yes                    ;
+; diga[4]                                             ; KEY[3]              ; yes                    ;
+; diga[5]                                             ; KEY[3]              ; yes                    ;
+; diga[6]                                             ; KEY[3]              ; yes                    ;
+; res[20]                                             ; res[20]             ; yes                    ;
+; S[0]                                                ; S[0]                ; yes                    ;
+; S[1]                                                ; S[0]                ; yes                    ;
+; S[2]                                                ; S[0]                ; yes                    ;
+; S[3]                                                ; S[0]                ; yes                    ;
+; S[5]                                                ; S[0]                ; yes                    ;
+; S[4]                                                ; S[0]                ; yes                    ;
+; S[6]                                                ; S[0]                ; yes                    ;
+; R[1]                                                ; HEX2                ; yes                    ;
+; R[2]                                                ; HEX2                ; yes                    ;
+; R[0]                                                ; HEX2                ; yes                    ;
+; soma[0]                                             ; S[0]                ; yes                    ;
+; soma[1]                                             ; S[0]                ; yes                    ;
+; soma[2]                                             ; S[0]                ; yes                    ;
+; soma[3]                                             ; S[0]                ; yes                    ;
+; soma[5]                                             ; S[0]                ; yes                    ;
+; soma[4]                                             ; S[0]                ; yes                    ;
+; soma[6]                                             ; S[0]                ; yes                    ;
+; Number of user-specified and inferred latches = 53  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |calculadora|soma[0]       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |calculadora|HEX3          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |calculadora|HEX1          ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |calculadora|HEX1          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |calculadora|soma[4]       ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |calculadora|HEX2          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |calculadora|HEX0          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 3              ; Untyped                ;
+; LPM_WIDTHD             ; 3              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_u4m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                   ;
++------------------------------------------------+------------+---------------------+
+; Parameter Name                                 ; Value      ; Type                ;
++------------------------------------------------+------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 3          ; Untyped             ;
+; LPM_WIDTHB                                     ; 3          ; Untyped             ;
+; LPM_WIDTHP                                     ; 6          ; Untyped             ;
+; LPM_WIDTHR                                     ; 6          ; Untyped             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 0          ; Untyped             ;
+; LATENCY                                        ; 0          ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped             ;
+; USE_EAB                                        ; OFF        ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped             ;
+; CBXI_PARAMETER                                 ; NOTHING    ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped             ;
++------------------------------------------------+------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 3              ; Untyped                ;
+; LPM_WIDTHD             ; 3              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_rcm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance         ;
++---------------------------------------+----------------+
+; Name                                  ; Value          ;
++---------------------------------------+----------------+
+; Number of entity instances            ; 1              ;
+; Entity Instance                       ; lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 3              ;
+;     -- LPM_WIDTHB                     ; 3              ;
+;     -- LPM_WIDTHP                     ; 6              ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED       ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO             ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
++---------------------------------------+----------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Oct 02 15:07:49 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off calculadora -c calculadora
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file calculadora.vhd
+    Info (12022): Found design unit 1: calculadora-operacoes
+    Info (12023): Found entity 1: calculadora
+Info (12021): Found 2 design units, including 0 entities, in source file bcd_decoder.vhd
+    Info (12022): Found design unit 1: bcd_decoder
+    Info (12022): Found design unit 2: bcd_decoder-body
+Info (12127): Elaborating entity "calculadora" for the top level hierarchy
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(31): inferring latch(es) for signal or variable "soma", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(31): inferring latch(es) for signal or variable "S", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(31): inferring latch(es) for signal or variable "R", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(53): inferring latch(es) for signal or variable "sinal", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(66): inferring latch(es) for signal or variable "res", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(66): inferring latch(es) for signal or variable "rest", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(66): inferring latch(es) for signal or variable "diga", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at calculadora.vhd(66): inferring latch(es) for signal or variable "digb", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "digb[0]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[1]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[2]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[3]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[4]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[5]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "digb[6]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[0]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[1]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[2]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[3]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[4]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[5]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "diga[6]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[0]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[1]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[2]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[3]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[4]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[5]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "rest[6]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[0]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[1]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[2]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[3]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[4]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[5]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[6]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[7]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[8]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[9]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[10]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[11]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[12]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[13]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[14]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[15]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[16]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[17]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[18]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[19]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "res[20]" at calculadora.vhd(66)
+Info (10041): Inferred latch for "sinal[0]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[1]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[2]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[3]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[4]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[5]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "sinal[6]" at calculadora.vhd(53)
+Info (10041): Inferred latch for "R[0]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[1]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[2]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[3]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[4]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[5]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[6]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[7]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[8]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[9]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[10]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[11]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[12]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[13]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[14]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[15]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[16]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[17]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[18]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[19]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[20]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[21]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[22]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[23]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[24]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[25]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[26]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[27]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[28]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[29]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[30]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "R[31]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[0]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[1]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[2]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[3]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[4]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[5]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "S[6]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[0]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[1]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[2]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[3]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[4]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[5]" at calculadora.vhd(31)
+Info (10041): Inferred latch for "soma[6]" at calculadora.vhd(31)
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "3"
+    Info (12134): Parameter "LPM_WIDTHD" = "3"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_u4m.tdf
+    Info (12023): Found entity 1: lpm_divide_u4m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_5kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_5kh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_cve.tdf
+    Info (12023): Found entity 1: alt_u_div_cve
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_lkc.tdf
+    Info (12023): Found entity 1: add_sub_lkc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_mkc.tdf
+    Info (12023): Found entity 1: add_sub_mkc
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0"
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "3"
+    Info (12134): Parameter "LPM_WIDTHB" = "3"
+    Info (12134): Parameter "LPM_WIDTHP" = "6"
+    Info (12134): Parameter "LPM_WIDTHR" = "6"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_07h.tdf
+    Info (12023): Found entity 1: add_sub_07h
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_17h.tdf
+    Info (12023): Found entity 1: add_sub_17h
+Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult0"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "3"
+    Info (12134): Parameter "LPM_WIDTHD" = "3"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_rcm.tdf
+    Info (12023): Found entity 1: lpm_divide_rcm
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "res[10]" merged with LATCH primitive "res[7]"
+Warning (13012): Latch R[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[0]
+Warning (13012): Latch R[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[1]
+Warning (13012): Latch soma[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+Warning (13012): Latch soma[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[5]
+Warning (13012): Latch soma[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+Warning (13012): Latch soma[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+Warning (13012): Latch soma[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal SW[4]
+Warning (13012): Latch soma[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal SW[4]
+Warning (13012): Latch soma[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[4]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal SW[4]
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX3[0]" is stuck at GND
+    Warning (13410): Pin "HEX3[5]" is stuck at GND
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "SW[6]"
+    Warning (15610): No output dependent on input pin "KEY[0]"
+    Warning (15610): No output dependent on input pin "KEY[1]"
+    Warning (15610): No output dependent on input pin "KEY[2]"
+Info (21057): Implemented 270 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21061): Implemented 228 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 4671 megabytes
+    Info: Processing ended: Wed Oct 02 15:07:53 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+

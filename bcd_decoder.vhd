@@ -1,0 +1,74 @@
+LIBRARY ieee;--chama as bibliotecas
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+PACKAGE bcd_decoder IS--define o pacode
+ FUNCTION conviseg(A: INTEGER) RETURN STD_LOGIC_VECTOR;-- define a entrada e saida do pacote como a função
+END bcd_decoder;
+PACKAGE BODY bcd_decoder IS--especifica o pacote
+ FUNCTION conviseg(A: INTEGER) RETURN STD_LOGIC_VECTOR IS-- especifica a função
+  VARIABLE result: STD_LOGIC_VECTOR(20 downto 0);-- variavel saida
+ BEGIN 
+  CASE A IS-- analiza o inteiro A e da a saida em vetor
+   WHEN -7 => result := "011111111111111011000";  
+   WHEN -6 => result := "011111111111110000010";  
+   WHEN -5 => result := "011111111111110010010";  
+   WHEN -4 => result := "011111111111110011001";  
+   WHEN -3 => result := "011111111111110110000";  
+   WHEN -2 => result := "011111111111110100100";  
+   WHEN -1 => result := "011111111111111111001";
+   WHEN 0 => result := "111111111111111000000";
+   WHEN 1 => result := "111111111111111111001";
+   WHEN 2 => result := "111111111111110100100";
+   WHEN 3 => result := "111111111111110110000";
+   WHEN 4 => result := "111111111111110011001";
+   WHEN 5 => result := "111111111111110010010";
+   WHEN 6 => result := "111111111111110000010";
+   WHEN 7 => result := "111111111111111011000";
+   WHEN 8 => result := "111111111111110000000";
+   WHEN 9 => result := "111111111111110010000";
+   WHEN 10 => result := "111111111110011000000";
+   WHEN 11 => result := "111111111110011111001";
+   WHEN 12 => result := "111111111110010100100";
+   WHEN 13 => result := "111111111110010110000";
+   WHEN 14 => result := "111111111110010011001";
+   WHEN 15 => result := "111111111110010010010";
+   WHEN 16 => result := "111111111110010000010";
+   WHEN 17 => result := "111111111110011011000";
+   WHEN 18 => result := "111111111110010000000";
+   WHEN 19 => result := "111111111110010010000";
+   WHEN 20 => result := "111111101001001000000";
+   WHEN 21 => result := "111111101001001111001";
+   WHEN 22 => result := "111111101001000100100";
+   WHEN 23 => result := "111111101001000110000";
+   WHEN 24 => result := "111111101001000011001";
+   WHEN 25 => result := "111111101001000010010";
+   WHEN 26 => result := "111111101001000000010";
+   WHEN 27 => result := "111111101001001011000";
+   WHEN 28 => result := "111111101001000000000";
+   WHEN 29 => result := "111111101001000010000";
+   WHEN 30 => result := "111111101100001000000";
+   WHEN 31 => result := "111111101100001111001";
+   WHEN 32 => result := "111111101100000100100";
+   WHEN 33 => result := "111111101100000110000";
+   WHEN 34 => result := "111111101100000011001";
+   WHEN 35 => result := "111111101100000010010";
+   WHEN 36 => result := "111111101100000000010";
+   WHEN 37 => result := "111111101100001011000";
+   WHEN 38 => result := "111111101100000000000";
+   WHEN 39 => result := "111111101100000010000";
+   WHEN 40 => result := "111111100110011000000";
+   WHEN 41 => result := "111111100110011111001";
+   WHEN 42 => result := "111111100110010100100";
+   WHEN 43 => result := "111111100110010110000";
+   WHEN 44 => result := "111111100110010011001";
+   WHEN 45 => result := "111111100110010010010";
+   WHEN 46 => result := "111111100110010000010";
+   WHEN 47 => result := "111111100110011011000";
+   WHEN 48 => result := "111111100110010000000";
+   WHEN 49 => result := "111111100110010010000";	
+   WHEN OTHERS => result := "011111101111110111111";
+  END CASE;
+  RETURN result;
+ END conviseg;
+
+END bcd_decoder;--encerra
