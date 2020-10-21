@@ -6,6 +6,6 @@
 * M0(Inteiro de 0 a 9) 
 * M1(Inteiro de 0 a 5) 
 * S0 (Inteiro de 0 a 9) 
-* S1(Inteiro de 0 a 5)<\br>
+* S1(Inteiro de 0 a 5)
 
   Então definimos que os valores dos displays são obtidos usando a função criada para a conversão de inteiro para o vetor, assim chamamos a função para cada display com seu respectivo digito a ser exibido. Um process sensível ao clock é iniciado. Um condicional identifica a borda de subida do clock, um novo condicional identifica se counter é diferente de SEG, se for então incrementa 1 a counter, senão zera counter e incrementa um a S0, um novo condicional identifica se S0=9 se for então zera S0 e incrementa 1 a S1, um condicional identifica se S1=5, positivo zera S1 e incrementa M0, outro condicional identifica M0=9, correspondendo zera M0 e incrementa M1, um ultimo condicional identifica M1=5 e reinicia todos os dígitos. O segundo código contém um package nomeado bcd_decoder, o qual é uma função com entrada A(inteiro) e saída STD_LOGIC_VECTOR. Seu funcionamento baseia-se em um case que analisa o valor de A e retorna o valor correto para acionar o display 7 segmentos
